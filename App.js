@@ -1,14 +1,47 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { createAppContainer, createStackNavigator } from "react-navigation";
 
-export default class App extends Component {
-  render() {
-    return (
-      <View>
-        <Text> App </Text>
-      </View>
-    );
+//screens
+import Home from "./src/routes/Home";
+import Login from "./src/routes/Login";
+import Cadastrar from "./src/routes/Cadastrar";
+import Drawer from "./src/Drawer";
+
+const MainNav = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        headerTitle: "Login"
+      }
+    },
+    Cadastrar: {
+      screen: Cadastrar,
+      navigationOptions: {
+        headerTitle: "Cadastrar"
+      }
+    },
+    Drawer: {
+      screen: Drawer,
+      navigationOptions: {
+        header: null
+      }
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      headerTitleStyle: {
+        color: "#0066CC"
+      },
+      headerTintColor: "#0066CC"
+    }
   }
-}
+);
 
-const styles = StyleSheet.create({});
+export default createAppContainer(MainNav);
